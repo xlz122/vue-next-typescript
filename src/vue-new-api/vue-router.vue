@@ -14,7 +14,7 @@ export default defineComponent({
     function goHome(): void {
       router.push({ name: 'home' });
     }
-
+    
     return {
       goHome
     };
