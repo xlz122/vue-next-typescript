@@ -14,10 +14,14 @@
     "types": [
       "webpack-env"
     ],
+    // ts下别名的检测
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@router/*": ["src/router/*"],
+      "@store/*": ["src/store/*"],
+      "@views/*": ["src/views/*"],
     },
     "lib": [
       "esnext",
