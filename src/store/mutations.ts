@@ -11,6 +11,9 @@ interface Mutations<T> {
 const mutations: Mutations<State> = {
   setMsg(state, msg: string) {
     state.msg = msg;
+  },
+  setToken(state, token: string) {
+    state.token = token;
   }
 };
 

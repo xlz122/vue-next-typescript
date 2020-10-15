@@ -1,22 +1,22 @@
 <template>
-  <button @click="goHome">跳转到首页</button>
-  <router-link :to="{ name: 'home' }">跳转到首页</router-link>
+  <p>{{ token }}</p>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { useRouter, Router } from 'vue-router';
+import { defineComponent, computed } from 'vue';
+import { useStore, Store } from 'vuex';
 
 export default defineComponent({
   setup() {
-    const router: Router = useRouter();
+    const store: Store<any> = useStore();
+    const token = computed<string>(() => store.getters.token);
 
-    function goHome(): void {
-      router.push({ name: 'home' });
-    }
+    setTimeout(() => {
+      store.commit('setToken', '我是新token');
+    }, 3000);
 
     return {
-      goHome
+      token
     };
   }
 });

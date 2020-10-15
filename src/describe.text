@@ -7,9 +7,6 @@ shims-vue.d.ts
   declare module "*.ts";
 
 未解决问题
-vue.commit.vue
-  直接更新store的数据，视图并没有变更
-
 importInterface.vue
   vue文件导入interface不能使用问题
 
