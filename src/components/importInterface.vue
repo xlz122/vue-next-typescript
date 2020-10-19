@@ -3,15 +3,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
-import { State } from './interface.ts';
+import { defineComponent } from 'vue';
+// import { State } from './interface.ts';
 
 export default defineComponent({
   setup() {
-    const state: State = reactive({
-      msg: '',
-      count: 0
-    });
+    // const state: State = reactive({
+    //   msg: '',
+    //   count: 0
+    // });
   }
 });
 </script>

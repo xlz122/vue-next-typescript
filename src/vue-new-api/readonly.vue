@@ -22,9 +22,9 @@ export default defineComponent({
     const state1 = readonly(state);
 
     // 修改无效
-    num1.value = 10000;
+    // num1.value = 10000;
     // 修改无效
-    state1.count = 100000;
+    // state1.count = 100000;
 
     return {
       num1,

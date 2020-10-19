@@ -1,7 +1,7 @@
 // 数组对象的类型定义
 interface List {
   title: string;
-  count: number
+  count: number;
 }
 
 interface State<T> {
@@ -9,7 +9,7 @@ interface State<T> {
   list: T[];
 }
 
-const list: State<List>[] = [
+export const list: State<List>[] = [
   {
     title: '',
     list: [
@@ -19,4 +19,4 @@ const list: State<List>[] = [
       }
     ]
   }
-]
+];

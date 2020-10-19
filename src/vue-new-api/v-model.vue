@@ -1,11 +1,17 @@
 <template>
   <p>一个组件支持多个v-model</p>
-  <VModelComponent
+  <v-model-component
     v-model:title="pageTitle"
     v-model:content="pageContent"
     @updateTitle="updateTitle"
     @updateContent="updateContent"
   />
+  <!-- <VModelComponent
+    v-model:title="pageTitle"
+    v-model:content="pageContent"
+    @updateTitle="updateTitle"
+    @updateContent="updateContent"
+  /> -->
 </template>
 
 <script lang="ts">

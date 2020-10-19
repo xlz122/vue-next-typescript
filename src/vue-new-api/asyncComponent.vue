@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <p>异步组件</p>
-    <vuex />
-  </div>
+  <p>异步组件</p>
+  <vuex />
 </template>
 
 <script>
