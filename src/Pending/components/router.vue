@@ -1,21 +1,27 @@
 <template>
   <div>
-    <button @click="goToVuex">跳转到vuex页面</button>
-    <router-link :to="{ name: 'vuex' }">跳转到vuex页面</router-link>
+    <p>路由</p>
+    <p @click="goToVuex">跳转vuex路由</p>
+    <p class="deep">{{ routers }}</p>
   </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router';
+
 export default {
   setup() {
     const router = useRouter();
 
-    function goToVuex() {
-      router.push({ name: 'vuex' });
-    }
+    // 获取路由列表
+    const routers = router.getRoutes();
 
+    // 路由跳转至vuex
+    function goToVuex() {
+      router.push('/vuex');
+    }
     return {
+      routers,
       goToVuex
     };
   }

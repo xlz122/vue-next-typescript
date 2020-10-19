@@ -1,18 +1,22 @@
 <template>
   <div>
-    <inject-com />
+    <inject />
   </div>
 </template>
 
 <script>
 import { ref, provide } from 'vue';
-import InjectCom from './inject.vue';
+import Inject from './inject.vue';
+
 export default {
   components: {
-    InjectCom
+    Inject
   },
   setup() {
-    const msg = ref('我是一条msg消息');
+    const msg = ref('provide测试');
+    // provide
+    // 第一参数：inject接收的变量
+    // 第二参数：传递的数据
     provide('msg', msg);
   }
 };

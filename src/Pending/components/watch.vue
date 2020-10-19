@@ -1,92 +1,86 @@
 <template>
   <div>
-    <p>{{ name }}</p>
-    <p>{{ name1 }}</p>
-    <p>{{ age1 }}</p>
-    <p>{{ name2 }}</p>
-    <p>{{ age2 }}</p>
-    <button @click="stopWatch">停止监听器</button>
+    <p>watch监听</p>
+    <p>注意：watch只能监听响应式变量</p>
+    <p>问题：不知道如何监听数组</p>
   </div>
 </template>
 
 <script>
-/* eslint-disable */
-import { ref, reactive, toRefs, watch, watchEffect } from 'vue';
+import { ref, reactive, watch } from 'vue';
 export default {
   setup() {
-    // ref类型
-    // 监听单个ref数据
-    const name = ref('name');
-    watch(
-      name, (curName, oldName) => {
-        console.log(curName);
-        console.log(oldName);
-      }
-    )
+    // 监听单个变量
+    const text = ref('我是text');
     setTimeout(() => {
-      name.value = '新name';
+      text.value = '我是新值';
     }, 1000);
-    // 监听多个ref数据
-    const name1 = ref('name1');
-    const age1 = ref(1);
+    // watch
+    // 第一个参数：回调函数，返回要监听的变量
+    // 第二个参数：回调函数，接收两个值（新值和旧值）
     watch(
-      [name1, age1],
-      ([curName1, curAge1], [oldName1, oldAge1]) => {
-        console.log(curName1); // 新name1
-        console.log(curAge1); // 新age1
-        console.log(oldName1); // 旧name1
-        console.log(oldAge1); // 就age1
+      () => text.value,
+      (curVal, oldVal) => {
+        console.log('新值:' + curVal);
+        console.log('旧值:' + oldVal);
       }
-    )
-    setTimeout(() => {
-      name1.value = '新name1';
-      age1.value = 2;
-    }, 1000);
+    );
 
-    // reactive类型
-    const state = reactive({
-      name2: 'name2',
-      age2: 3
+    // 监听多个变量
+    const obj = reactive({
+      name: 'xyc',
+      age: 25,
+      sex: '男'
     });
-    // 监听单个reactive数据
-    watch(
-      () => state.name2,
-      (curName2, oldName2) => {
-        console.log(curName2); // 新name2
-        console.log(oldName2); // 旧name2
-      }
-    )
-    // 监听多个reactive数据
-    const stop = watch(
-      [() => state.name2, () => state.age2],
-      ([curName2, curAge2], [oldName2, oldAge2]) => {
-        console.log(curName2); // 新name2
-        console.log(curAge2); // 新age2
-        console.log(oldName2); // 旧name2
-        console.log(oldAge2); // 就age2
-      }
-    )
-
-    // 停止监听器
-    const stopWatch = () =>  stop();
-
     setTimeout(() => {
-      state.name2 = '新name2';
-      state.age2 = 4;
+      obj.name = '我是新的name';
     }, 1000);
+    setTimeout(() => {
+      obj.age = '我是新的age';
+    }, 1000);
+    // watch
+    // 第一个参数：数组形式的回调函数，返回要监听的变量
+    // 第二个参数：回调函数，接收两个值（数组形式的新值和旧值）
+    watch(
+      [() => obj.name, () => obj.age],
+      ([curName, curAge], [oldName, oldAge]) => {
+        console.log(curName); // 新name
+        console.log(curAge); // 新age
+        console.log(oldName); // 旧name
+        console.log(oldAge); // 旧age
+      }
+    );
 
-    watchEffect(() => {
-      // 这里面类似于监听响应式数据，只要在这里面使用了响应式数据，就会被触发
-      // 比如 console.log(state.name2)
-    })
+    // 监听数组（没反应）
+    const arr = reactive([0, 1, 2]);
+    setTimeout(() => {
+      arr[0] = 3;
+    }, 1000);
+    watch(
+      () => arr,
+      (curVal, oldVal) => {
+        console.log(curVal);
+        console.log(oldVal);
+      }
+    );
 
-    return {
-      name,
-      name1,
-      age1,
-      ...toRefs(state),
-      stopWatch
-    }
+    // 停止监听
+    const count = ref(0);
+    setInterval(() => {
+      count.value++;
+      if (count.value === 10) {
+        // 停止监听器
+        stopWatch();
+        console.log('监听器停止了');
+      }
+    }, 1000);
+    // 监听器停止函数，以返回值的方式
+    const stopWatch = watch(
+      () => count.value,
+      curVal => {
+        console.log('测试监听器停止:' + curVal);
+      }
+    );
   }
-}
+};
 </script>
