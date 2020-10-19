@@ -22,7 +22,7 @@ export default defineComponent({
     });
 
     // 作为一个reactive对象的属性
-    const aRef = toRef<State, Count>(state, 'count');
+    const aRef = toRef<State, 'count'>(state, 'count');
     console.log(aRef);
 
     aRef.value++;
