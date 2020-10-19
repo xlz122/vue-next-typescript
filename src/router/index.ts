@@ -17,6 +17,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
+  // BASE_URL 和 vue.config.js 的publicPath相对应
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
