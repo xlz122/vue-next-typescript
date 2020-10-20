@@ -13,9 +13,6 @@
     importInterface.vue
       vue文件导入interface不能使用问题
     
-    directive.vue
-      组件自定义指令未完成
-    
     setup.vue
       使用setup语法糖，问题：props不知道怎么定义
     
