@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-10-13 14:33:42
- * @LastEditTime: 2020-10-15 16:36:30
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \vue-next-ts\src\store\getters.ts
- */
 import { State } from '@store/state';
 
 interface Getter<T> {
@@ -18,7 +10,8 @@ export interface Getters<T> {
 
 const getters: Getters<State> = {
   msg: state => state.msg,
-  token: state => state.token
+  token: state => state.token,
+  holdIndex: state => state.holdIndex
 };
 
 export default getters;

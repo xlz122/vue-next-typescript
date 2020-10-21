@@ -14,6 +14,9 @@ const mutations: Mutations<State> = {
   },
   setToken(state, token: string) {
     state.token = token;
+  },
+  setHoldIndex(state, index: number) {
+    state.holdIndex = index;
   }
 };
 
