@@ -1,11 +1,7 @@
 import { State } from '@store/state';
 
-interface Mutation<T> {
-  (state: T, payload: any): void;
-}
-
 interface Mutations<T> {
-  [key: string]: Mutation<T>;
+  [key: string]: (state: T, ...rest: any[]) => void;
 }
 
 const mutations: Mutations<State> = {

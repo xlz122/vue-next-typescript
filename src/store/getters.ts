@@ -1,11 +1,7 @@
 import { State } from '@store/state';
 
-interface Getter<T> {
-  (state: T): any;
-}
-
 export interface Getters<T> {
-  [key: string]: Getter<T>;
+  [key: string]: (state: T) => any;
 }
 
 const getters: Getters<State> = {
