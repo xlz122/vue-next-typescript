@@ -10,8 +10,11 @@ export interface Store {
   dispatch(type: string, payload: any): void;
 }
 
+interface Action<Store> {
+  (state: Store, payload: any): void;
+}
 interface Actions<Store> {
-  [key: string]: (state: Store, payload: any) => void;
+  [key: string]: Action<Store>;
 }
 
 const actions: Actions<Store> = {

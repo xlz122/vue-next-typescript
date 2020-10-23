@@ -13,9 +13,6 @@
     importInterface.vue
       vue文件导入interface不能使用问题
     
-    setup.vue
-      使用setup语法糖，问题：props不知道怎么定义
-    
     待处理文件
       Pending 前面几个月写的v3新特性等待整理
   </div>
