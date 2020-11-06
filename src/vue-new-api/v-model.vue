@@ -3,19 +3,13 @@
   <v-model-component
     v-model:title="pageTitle"
     v-model:content="pageContent"
-    @updateTitle="updateTitle"
-    @updateContent="updateContent"
   />
-  <!-- <VModelComponent
-    v-model:title="pageTitle"
-    v-model:content="pageContent"
-    @updateTitle="updateTitle"
-    @updateContent="updateContent"
-  /> -->
+  <div>{{ pageTitle }}</div>
+  <div>{{ pageContent }}</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 import VModelComponent from './v-model-component.vue';
 
 export default defineComponent({
@@ -26,19 +20,17 @@ export default defineComponent({
     const pageTitle = ref<string>('消息1');
     const pageContent = ref<string>('消息2');
 
-    // 子组件传递到父组件的事件
-    function updateTitle(value: string): void {
-      console.log(value);
-    }
+    watch(() => pageTitle.value, (cur, old) => {
+      console.log(cur);
+    })
 
-    function updateContent(value: string): void {
-      console.log(value);
-    }
+    watch(() => pageContent.value, (cur, old) => {
+      console.log(cur);
+    })
+
     return {
       pageTitle,
-      pageContent,
-      updateTitle,
-      updateContent
+      pageContent
     };
   }
 });
