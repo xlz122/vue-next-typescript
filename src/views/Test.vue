@@ -1,84 +1,48 @@
 <template>
-  <div id="myChart" style="width: 100%; height: 400px"></div>
+  <p>如果一个变量的类型是变化的（比如来自 JS 程序的对象，随时都有可能多一个属性，甚至变成完全不同的类型），就用 any。</p>
+  <p>如果一个变量的类型是固定的，但是目前还不能确定或不想确定，就用 unknown。
+    要用这个变量的时候就断言一下吧，不能像 any 那样糊里糊涂地用。</p>
+  <p></p>
 </template>
 
-<script>
-import { defineComponent, onMounted } from 'vue';
-import echarts from 'echarts/lib/echarts';
-import 'echarts/lib/component/tooltip';
-import 'echarts/lib/component/title';
-import 'echarts/lib/component/legend';
-import 'echarts/lib/chart/line';
+<script lang="ts">
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
-    onMounted(() => {
-      // 初始化实例
-      var chartContainer = document.getElementById('myChart');
-      var myChart = echarts.init(chartContainer);
+    // let a: unknown = 1;
+    // let b = {
+    //   name: unknown;
+    // }
+    // (b as { name: string }).name = '3';
+    // (b as { name: number }).name = 4;
+    // console.log((a as { name: string }).name);
+    // 类型收缩
+    type getAnimal = () => unknown;
 
-      // 组装echarts折线图所需要的数据
-      var xAxisData = [];
-      var seriesData = [];
-      for (var i = 0; i < 3; i++) {
-        xAxisData.push(new Date().getTime());
-        seriesData.push(i++);
+    function getAnimal(): string {
+      return 'x';
+    }
+    
+    const dog = getAnimal();
+    
+    if (typeof dog === 'string') {
+      console.log(dog.toLowerCase());
+    }
+
+    // 函数参数解构类型断言
+    interface User {
+      firstName: string
+      lastName?: string
+    }
+
+    const fullName = ({ firstName, lastName }: User) => {
+      if (lastName === undefined) {
+        return firstName
       }
 
-      // 配置项
-      var options = {
-        title: {
-          text: '统计',
-          left: 'center',
-        },
-        // 坐标轴指示器
-        tooltip: {
-          trigger: 'axis',
-        },
-        legend: {
-          data: ['数量'],
-          top: '7%',
-        },
-        // grid 组件离容器的距离
-        grid: {
-          left: 100,
-          bottom: 100,
-          // containLabel:true 防止标签溢出
-        },
-        xAxis: {
-          type: 'category',
-          // splitLine:{show:true},
-          data: xAxisData,
-          axisLabel: {
-            // 显示所有横坐标刻度
-            interval: 0,
-            //坐标倾斜
-            rotate: 30,
-          },
-        },
-        yAxis: {
-          type: 'value',
-        },
-        series: [
-          {
-            name: '数量',
-            // 图表类型
-            type: 'line',
-            // 显示数值
-            itemStyle: { normal: { label: { show: true } } },
-            data: seriesData,
-          },
-        ],
-      };
-
-      //载入配置
-      myChart.setOption(options);
-
-      // 图表自适应窗口大小
-      window.addEventListener('resize', function () {
-        myChart.resize();
-      });
-    });
-  },
+      return `${lastName}, ${firstName}`;
+    }
+  }
 });
 </script>
