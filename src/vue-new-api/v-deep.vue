@@ -11,7 +11,7 @@
   }
 }
 // 简写方式
-:deep(.foo) {}
-:slotted(.foo) {}
-:global(.foo) {}
+// :deep(.foo) {}
+// :slotted(.foo) {}
+// :global(.foo) {}
 </style>
