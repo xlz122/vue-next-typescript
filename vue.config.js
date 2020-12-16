@@ -118,7 +118,7 @@ module.exports = {
     // 配置cdn引入
     config.plugin('html').tap(args => {
       // 配置index.html title
-      args[0].title = 'vue-next-jspang';
+      args[0].title = 'vue-next-ts';
 
       // if (process.env.NODE_ENV === 'production') {
       //   args[0].cdn = cdn

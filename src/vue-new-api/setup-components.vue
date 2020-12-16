@@ -4,5 +4,5 @@
 </template>
 
 <script lang="ts" setup>
-export { default as TodoList } from './todolist.vue';
+export { default as TodoList } from '../views/todolist.vue';
 </script>

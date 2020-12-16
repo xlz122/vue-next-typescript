@@ -10,4 +10,8 @@
     color: red;
   }
 }
+// 简写方式
+:deep(.foo) {}
+:slotted(.foo) {}
+:global(.foo) {}
 </style>

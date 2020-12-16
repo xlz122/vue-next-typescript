@@ -3,6 +3,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { defineComponent, onMounted } from 'vue';
 import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/component/tooltip';
@@ -29,20 +30,20 @@ export default defineComponent({
       var options = {
         title: {
           text: '统计',
-          left: 'center',
+          left: 'center'
         },
         // 坐标轴指示器
         tooltip: {
-          trigger: 'axis',
+          trigger: 'axis'
         },
         legend: {
           data: ['数量'],
-          top: '7%',
+          top: '7%'
         },
         // grid 组件离容器的距离
         grid: {
           left: 100,
-          bottom: 100,
+          bottom: 100
           // containLabel:true 防止标签溢出
         },
         xAxis: {
@@ -53,11 +54,11 @@ export default defineComponent({
             // 显示所有横坐标刻度
             interval: 0,
             //坐标倾斜
-            rotate: 30,
-          },
+            rotate: 30
+          }
         },
         yAxis: {
-          type: 'value',
+          type: 'value'
         },
         series: [
           {
@@ -66,19 +67,19 @@ export default defineComponent({
             type: 'line',
             // 显示数值
             itemStyle: { normal: { label: { show: true } } },
-            data: seriesData,
-          },
-        ],
+            data: seriesData
+          }
+        ]
       };
 
       //载入配置
       myChart.setOption(options);
 
       // 图表自适应窗口大小
-      window.addEventListener('resize', function () {
+      window.addEventListener('resize', function() {
         myChart.resize();
       });
     });
-  },
+  }
 });
 </script>
