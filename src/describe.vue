@@ -8,12 +8,5 @@
     shims-vue.d.ts
       解决.vue文件导入ts文件时，使用路径别名路径找不到问题
       declare module "*.ts";
-    
-    未解决问题
-    importInterface.vue
-      vue文件导入interface不能使用问题
-    
-    待处理文件
-      Pending 前面几个月写的v3新特性等待整理
   </div>
 </template>

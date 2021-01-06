@@ -1,4 +1,4 @@
 export interface State {
   msg: string;
-  coount: number;
+  count: number;
 }

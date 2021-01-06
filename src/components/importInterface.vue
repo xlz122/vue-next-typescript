@@ -1,17 +1,21 @@
 <template>
-  <p>问题： .vue组件使用ts文件导出的interface用不了</p>
+  <p>{{ state.msg }}</p>
+  <p>{{ state.count }}</p>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-// import { State } from './interface.ts';
+import { defineComponent, reactive } from 'vue';
+import { State } from './interface';
 
 export default defineComponent({
   setup() {
-    // const state: State = reactive({
-    //   msg: '',
-    //   count: 0
-    // });
+    const state: State = reactive({
+      msg: '',
+      count: 0
+    });
+    return {
+      state
+    };
   }
 });
 </script>
