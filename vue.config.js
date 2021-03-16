@@ -27,7 +27,8 @@ function resolve(dir) {
 // }
 
 // gzip压缩
-// 需要安装插件：npm install --save-dev compression-webpack-plugin
+// npm install compression-webpack-plugin --save-dev
+// yarn add compression-webpack-plugin --save-dev
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 // 可加入需要的其他文件类型，比如json
 // 图片不要压缩，体积会比原来还大
@@ -35,8 +36,7 @@ const productionGzipExtensions = ["js", "css", "json"];
 
 
 module.exports = {
-  // publicPath: './', // 公共路径
-  //如果使用了history.pushState pages的路由时； 选项构建多页面应用时；
+  // 公共路径
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   outputDir: 'dist', // 打包(build)生成文件目录 默认dist
   assetsDir: '', // 默认不写或空，css js img文件夹都将放置在根目录下，所有的静态文件放置路径
@@ -92,11 +92,6 @@ module.exports = {
             minRatio: 0.6 // 压缩比例，值为0 ~ 1
           })
         ],
-        // resolve: {
-        //   alias: {
-        //     '@ant-design/icons/lib/dist$': resolve('./src/utils/icons.js')
-        //   }
-        // }
       };
     } else {
       // 为开发环境修改配置...
@@ -106,14 +101,10 @@ module.exports = {
     // 设置文件路径别名(需要配合顶部的方法)
     config.resolve.alias
       .set('@', resolve('src'))
-      // .set('@api', resolve('src/api'))
       .set('@assets', resolve('src/assets'))
       .set('@components', resolve('src/components'))
-      // .set('@axios', resolve('src/axios'))
-      // .set('@config', resolve('src/config'))
       .set('@router', resolve('src/router'))
       .set('@store', resolve('src/store'))
-      // .set('@libs', resolve('src/libs'))
       .set('@views', resolve('src/views'))
     // 配置cdn引入
     config.plugin('html').tap(args => {
