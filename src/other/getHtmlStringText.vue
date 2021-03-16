@@ -10,7 +10,7 @@ export default defineComponent({
     const html: string = '<span class="red">hello world</span> <span>hello xxx</span>';
 
     function decoder(html: string): string | null {
-      const decoder = document.createElement('div');
+      const decoder = document.createElement('div') as HTMLElement;
       // 通过设置innerHTML把字符串转换成对应的HTML元素
       decoder.innerHTML = html;
       // 通过textContent属性来获取文本内容
