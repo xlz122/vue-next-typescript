@@ -1,4 +1,5 @@
 <template>
+  <p>mixin混入</p>
   <p>{{ msg }}}</p>
 </template>
 

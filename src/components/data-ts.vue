@@ -12,15 +12,22 @@ interface Book {
 }
 
 export default defineComponent({
-  setup() {},
-  data() {
+  data(): Book {
     return {
-      book: {
-        title: 'Vue 3 Guide',
-        author: 'Vue Team',
-        year: 2020
-      } as Book
+      title: 'Vue 3 Guide',
+      author: 'Vue Team',
+      year: 2020
     }
   }
+  // 第二种写法
+  // data() {
+  //   return {
+  //     book: {
+  //       title: 'Vue 3 Guide',
+  //       author: 'Vue Team',
+  //       year: 2020
+  //     } as Book
+  //   }
+  // }
 });
 </script>

@@ -1,4 +1,6 @@
 <template>
+  <p>多层子组件传递数据</p>
+  <p>所有子组件都可以通过provide接收</p>
   <Inject />
 </template>
 
