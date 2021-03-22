@@ -48,9 +48,31 @@ module.exports = {
     extract: true, // 是否使用 css 分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用 <style> 方式内联至 html 文件中
     requireModuleExtension: true, // 开启module <style module></style>
     loaderOptions: {
+      // 给 stylus-loader 传递选项
+      stylus:{
+        // http://lesscss.org/usage/#less-options-strict-units `Global Variables`
+        // `primary` is global variables fields name
+        // import: '~@/assets/styles/varibles.styl',
+        // globalVars: {
+        //   primary: '#fff'
+        // }
+      },
+      // 给 sass-loader 传递选项
+      sass: {
+        // @/ 是 src/ 的别名
+        // 所以这里假设你有 `src/variables.sass` 这个文件
+        // 注意：在 sass-loader v7 中，这个选项名是 "data"
+        // prependData: `@import "~@/variables.sass"`
+      },
+      // 给 less-loader 传递选项
       less: {
+        // 若 less-loader 版本小于 6.0，请移除 lessOptions 这一级，直接配置选项。
         lessOptions: {
           javascriptEnabled: true,
+          modifyVars: {
+            // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
+            hack: `true; @import "@/assets/common.less";`,
+          },
         },
       },
     },
@@ -116,6 +138,8 @@ module.exports = {
       // }
       return args
     })
+    // 当基于已有的后端使用 Vue CLI 时，你可能不需要生成 index.html
+    // config.plugins.delete('html');
     // 移除 prefetch 插件
     config.plugins.delete('prefetch');
     // 移除 preload 插件
@@ -123,5 +147,7 @@ module.exports = {
   },
   pluginOptions: {
     // 第三方插件配置
-  }
+  },
+  // 去掉文件名中的 hash
+  filenameHashing: false,
 };
