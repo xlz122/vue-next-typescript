@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { defineEmit, defineProps } from 'vue';
+import { defineProps, defineEmit } from 'vue';
 
 const props = defineProps({
   modelValue: {

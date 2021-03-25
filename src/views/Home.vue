@@ -1,46 +1,15 @@
 <template>
-  <p>数组/数组对象，ts类型断言</p>
+  <p>setup语法糖中，获取emit, slots, attrs</p>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script lang="ts" setup>
+import { useContext } from 'vue';
 
-// 只有一种类型的数组
-interface NumberArray {
-  [index: number]: number;
-}
+// const ctx = useContext();
+// console.log(ctx);
 
-// 数组对象
-interface List {
-  title: string;
-  count: number;
-}
-
-interface State<T> {
-  title: string;
-  list: T[];
-}
-
-export default defineComponent({
-  setup() {
-    const numArr: NumberArray = [1, 2, 3];
-
-    const list = ref<State<List>[]>([
-      {
-        title: '',
-        list: [
-          {
-            title: '',
-            count: 0
-          }
-        ]
-      }
-    ]);
-
-    return {
-      numArr,
-      list
-    };
-  }
-});
+const { emit, slots, attrs } = useContext();
+console.log(emit);
+console.log(slots);
+console.log(attrs);
 </script>
