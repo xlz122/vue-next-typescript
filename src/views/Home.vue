@@ -1,25 +1,45 @@
 <template>
-  <div>{{ obj }}</div>
+  <p>数组/数组对象，ts类型断言</p>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
+// 只有一种类型的数组
+interface NumberArray {
+  [index: number]: number;
+}
+
+// 数组对象
+interface List {
+  title: string;
+  count: number;
+}
+
+interface State<T> {
+  title: string;
+  list: T[];
+}
+
 export default defineComponent({
   setup() {
-    const obj = ref<unknown>({
-      name: 'abl',
-      o: {}
-    });
+    const numArr: NumberArray = [1, 2, 3];
 
-    // 定义unknown的属性
-    const name = (obj.value as { name: string }).name;
-    console.log(name);
-    // 定义unknown的对象属性
-    const o = (obj.value as { [key: string]: unknown }).o;
-    console.log(o);
+    const list = ref<State<List>[]>([
+      {
+        title: '',
+        list: [
+          {
+            title: '',
+            count: 0
+          }
+        ]
+      }
+    ]);
+
     return {
-      obj
+      numArr,
+      list
     };
   }
 });
