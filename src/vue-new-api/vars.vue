@@ -18,3 +18,18 @@ const font = {
   font-size: v-bind('font.size');
 }
 </style>
+
+<!-- 旧版本 -->
+<template>
+  <p class="test">测试setup vars {{ color }}</p>
+</template>
+
+<script setup>
+const color = 'red';
+</script>
+
+<style vars="{ color }" scoped>
+.test {
+  color: var(--color);
+}
+</style>
