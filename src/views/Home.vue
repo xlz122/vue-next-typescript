@@ -1,15 +1,20 @@
+<!-- 新版本 -->
 <template>
-  <p>setup语法糖中，获取emit, slots, attrs</p>
+  <p class="test">测试setup vars {{ color }}</p>
 </template>
 
-<script lang="ts" setup>
-import { useContext } from 'vue';
-
-// const ctx = useContext();
-// console.log(ctx);
-
-const { emit, slots, attrs } = useContext();
-console.log(emit);
-console.log(slots);
-console.log(attrs);
+<script setup>
+const color = 'red';
+const font = {
+  size: '18px'
+};
 </script>
+
+<style scoped>
+.test {
+  /* 变量使用 */
+  color: v-bind(color);
+  /* 对象使用 */
+  font-size: v-bind('font.size');
+}
+</style>

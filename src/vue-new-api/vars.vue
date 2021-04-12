@@ -1,13 +1,20 @@
+<!-- 新版本 -->
 <template>
   <p class="test">测试setup vars {{ color }}</p>
 </template>
 
 <script setup>
-export const color = 'red';
+const color = 'red';
+const font = {
+  size: '18px'
+};
 </script>
 
-<style vars="{ color }" scoped>
+<style scoped>
 .test {
-  color: var(--color);
+  /* 变量使用 */
+  color: v-bind(color);
+  /* 对象使用 */
+  font-size: v-bind('font.size');
 }
 </style>
