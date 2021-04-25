@@ -14,7 +14,7 @@ app.config.errorHandler = (err, vm, info) => {
   console.log(err);
   console.log(vm);
   console.log(info);
-  throw err;
+  throw new Error(err as string);
 };
 
 app.use(store);
