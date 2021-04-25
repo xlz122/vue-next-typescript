@@ -10,12 +10,7 @@ export default defineComponent({
     const myRef = ref<HTMLElement>();
 
     onMounted(() => {
-      // console.dir(myRef.value);
-      // function foo(ref: HTMLElement) {}
-      // foo(myRef.value);
-
-      // function bar({ value }: { value: HTMLElement }) {}
-      // bar(myRef);
+      console.dir(myRef.value);
     });
     const count = ref(0);
     return {
@@ -25,9 +20,9 @@ export default defineComponent({
   },
   data() {
     return {
-      count: 2,
+      // count: 2,
       count2: 2
-    }
+    };
   },
   mounted() {
     console.log(this.count);
