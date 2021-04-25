@@ -10,14 +10,14 @@ export default defineComponent({
     const persion = {
       age: 3,
       text: 'hello world'
-    }
+    };
 
     // 直接获取报错
     // console.log(persion[age]);
 
     // 写一个方法获取对象里面的属性值时，一般人可能会这么写
     function get<T extends object, K extends keyof T>(o: T, key: K): T[K] {
-      return o[key]
+      return o[key];
     }
 
     const age = get(persion, 'age');

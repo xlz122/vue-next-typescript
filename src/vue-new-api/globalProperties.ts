@@ -9,6 +9,12 @@ const app = createApp(App);
 // 替代掉Vue2.x的 Vue.prototype属性放到原型上的写法
 app.config.globalProperties.foo = 'bar';
 
+// 组件使用
+// import { getCurrentInstance } from 'vue';
+// 建议使用proxy,ctx打包后拿不到(亲测)
+// const { proxy, ctx } = getCurrentInstance();
+// proxy.foo; 全局属性
+
 export default {
   mounted() {
     // console.log(this.foo);

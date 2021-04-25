@@ -12,13 +12,13 @@ export default defineComponent({
       obj: {
         name: string;
         age: number;
-      }
+      };
     }
-    
+
     const obj: Person['obj'] = {
       name: 'xxx',
       age: 23
-    }
+    };
   }
 });
 </script>

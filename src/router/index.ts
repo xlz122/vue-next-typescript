@@ -5,6 +5,15 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+  },
+  // 未匹配的路径名称导航到该路径
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () =>
+      import(
+        /* webpackChunkName: "not-found" */ '../views/not-found/notFound.vue'
+      )
   }
 ];
 
