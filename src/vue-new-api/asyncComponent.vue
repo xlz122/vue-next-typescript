@@ -1,6 +1,13 @@
 <template>
   <p>异步组件</p>
-  <vuex />
+  <Suspense>
+    <template v-slot:default>
+      <vuex />
+    </template>
+    <template v-slot:fallback>
+      <h1>loading...</h1>
+    </template>
+  </Suspense>
 </template>
 
 <script>
