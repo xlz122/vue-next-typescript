@@ -28,11 +28,20 @@ export default defineComponent({
       (curVal, oldVal) => {
         console.log(curVal);
         console.log(oldVal);
+      },
+      {
+        immediate: true, // 初始化监听
+        deep: true // 深度监听
       }
     );
 
-    const stopWatchEffect: WatchStopHandle = watchEffect(() => {
+    // 页面初始化触发
+    // 响应式变量更新触发
+    const stopWatchEffect: WatchStopHandle = watchEffect((onInvalidate) => {
       console.log(state.count);
+      onInvalidate(() => {
+        console.log('count更新/组件卸载');
+      });
     });
 
     function addCount(): void {
