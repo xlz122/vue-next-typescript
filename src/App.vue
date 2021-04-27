@@ -2,6 +2,22 @@
   <router-view />
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  props: {
+    username: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props) {
+    console.dir(props);
+  }
+});
+</script>
+
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

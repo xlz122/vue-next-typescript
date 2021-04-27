@@ -4,7 +4,11 @@ import router from '@router/index';
 import store from '@store/index';
 import '@/index.less';
 
-const app = createApp(App);
+// 参数：components options
+// 全局传递，整个项目中，都可以通过props接收username，并使用，参考APP.vue获取
+const app = createApp(App, {
+  username: 'xlz'
+});
 
 // 捕获全局错误
 // 错误一旦被这个方法捕获，就不会外抛到在控制台
