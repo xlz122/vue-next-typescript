@@ -6,6 +6,21 @@ const routes: Array<RouteRecordRaw> = [
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
+  {
+    path: '/todolist',
+    name: 'todolist',
+    component: () =>
+      import(/* webpackChunkName: "todolist" */ '../views/TodoList.vue')
+  },
+  {
+    path: '/keep-alive',
+    name: 'keep-alive',
+    meta: {
+      keepAlive: true // 需要被缓存
+    },
+    component: () =>
+      import(/* webpackChunkName: "keep-alive" */ '../views/KeepAlive.vue')
+  },
   // 未匹配的路径名称导航到该路径
   {
     path: '/:pathMatch(.*)*',

@@ -1,4 +1,7 @@
 <template>
+  <p>
+    <router-link to="/keep-alive">跳转keep-alive路由</router-link>
+  </p>
   <input v-model="inputVal" type="text" placeholder="请输入" />
   <button @click="addList">添加</button>
   <ul>
