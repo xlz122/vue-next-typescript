@@ -6,6 +6,15 @@
     </keep-alive>
   </router-view>
   <router-view v-if="!$route.meta.keepAlive"></router-view>
+
+  <!-- 旧版本 -->
+  <!-- 3.22号之前还可以用，参考存库（vue-next-test）第一次提交时间 -->
+  <!-- 
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive" />
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
+  -->
 </template>
 
 <script lang="ts">
