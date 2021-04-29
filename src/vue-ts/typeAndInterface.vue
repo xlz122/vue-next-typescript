@@ -1,7 +1,6 @@
 <template>
   <p>type interface区别</p>
   <p>总结：</p>
-  <p>一般来说，能用interface实现，就用interface，如果不能就用type</p>
   <p>项目需统一，要么用interface，要么用type</p>
 </template>
 
