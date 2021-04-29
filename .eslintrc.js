@@ -24,6 +24,6 @@ module.exports = {
     ], // 禁止在变量定义之前使用它们 variables(变量)
     quotes: [2, 'single'], // 开启强制单引号
     // 'max-len': [1, { code: 90 }] // 最大行长度
-    'comma-dangle': [2, 'never'] // 对象和数组最后一项尾随逗号
+    // 'comma-dangle': [2, 'never'] // 对象和数组最后一项尾随逗号
   }
 };

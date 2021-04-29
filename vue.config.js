@@ -78,7 +78,6 @@ module.exports = {
   },
   devServer: {
     open: true, // 启动后是否自动打开浏览器
-    // host: 'localhost', // 默认是localhost 设置启动的服务器地址 可设置为192.168.0.0本地ip方式
     port: 8010, // 启动服务端口号
     // index: '',   //启动项目后，默认进入的页面地址
     proxy: {
