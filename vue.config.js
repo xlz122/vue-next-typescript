@@ -6,25 +6,25 @@ function resolve(dir) {
 }
 
 // 配置不进行webpack打包的文件
-// const externals = {
-//   'vue': 'Vue',
-//   'vue-router': 'VueRouter',
-//   'vuex': 'Vuex',
-//   'axios': 'axios'
-//   // 'lodash':'_',
-//   // 'echarts': 'echarts',
-//   // 'nprogress': 'NProgress',
-// }
+const externals = {
+  'vue': 'Vue',
+  'vue-router': 'VueRouter',
+  'vuex': 'Vuex',
+  'axios': 'axios'
+  // 'lodash':'_',
+  // 'echarts': 'echarts',
+  // 'nprogress': 'NProgress',
+}
 // 使用cdn引入
-// const cdn = {
-//   css: [],
-//   js: [
-//     'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js',
-//     'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
-//     'https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.min.js',
-//     'https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js',
-//   ]
-// }
+const cdn = {
+  css: [],
+  js: [
+    'https://lib.baomitu.com/vue/3.0.11/vue.runtime.global.prod.js',
+    'https://lib.baomitu.com/vue-router/4.0.6/vue-router.global.prod.min.js',
+    'https://lib.baomitu.com/vuex/4.0.0/vuex.global.prod.min.js',
+    'https://lib.baomitu.com/axios/0.21.1/axios.min.js',
+  ]
+}
 
 // gzip压缩
 // npm install compression-webpack-plugin --save-dev
@@ -101,7 +101,7 @@ module.exports = {
 
       return {
         // 配置不进行webpack打包的文件
-        // externals: externals,
+        externals: externals,
         // 配置gzip压缩
         plugins: [
           new CompressionWebpackPlugin({
@@ -133,9 +133,9 @@ module.exports = {
       // 配置index.html title
       args[0].title = 'vue-next-ts';
 
-      // if (process.env.NODE_ENV === 'production') {
-      //   args[0].cdn = cdn
-      // }
+      if (process.env.NODE_ENV === 'production') {
+        args[0].cdn = cdn
+      }
       return args;
     });
     // 当基于已有的后端使用 Vue CLI 时，你可能不需要生成 index.html
