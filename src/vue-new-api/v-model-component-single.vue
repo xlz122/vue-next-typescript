@@ -17,10 +17,10 @@ export default defineComponent({
   // 需要和emits同名，否则控制台报警告
   // emits可以进行验证
   // https://v3.vuejs.org/guide/component-custom-events.html#validate-emitted-events
-  emits: ['update:inputChange'],
+  emits: ['update:modelValue'],
   setup(props, ctx) {
     function inputChange(e: any): void {
-      ctx.emit('update:inputChange', e.target.value);
+      ctx.emit('update:modelValue', e.target.value);
     }
 
     return {
