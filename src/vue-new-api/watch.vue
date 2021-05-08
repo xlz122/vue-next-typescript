@@ -1,5 +1,6 @@
 <template>
   <p>{{ count }}</p>
+  <router-link to="/test">test</router-link>
   <button @click="addCount">count++</button>
 </template>
 
@@ -35,12 +36,14 @@ export default defineComponent({
       }
     );
 
-    // 页面初始化触发
-    // 响应式变量更新触发
+    // 页面初始化触发 / 响应式变量更新触发
+    // onInvalidate: 类似react的useEffect
+    // 使用了响应式变量，则会重新执行watchEffect前触发
+    // 使用了一个空的watchEffect，则在组件销毁前触发
     const stopWatchEffect: WatchStopHandle = watchEffect((onInvalidate) => {
       console.log(state.count);
       onInvalidate(() => {
-        console.log('count更新/组件卸载');
+        alert('count更新/组件卸载');
       });
     });
 
