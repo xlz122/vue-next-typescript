@@ -1,65 +1,66 @@
 <template>
-  <p>{{ count }}</p>
-  <router-link to="/test">test</router-link>
-  <button @click="addCount">count++</button>
+  <div class="home">
+    <div class="content">
+      <div>
+        <img class="img" v-img-lazy="picture" alt="" />
+      </div>
+      <div>
+        <img class="img" v-img-lazy="picture1" alt="" />
+      </div>
+      <div>
+        <img class="img" v-img-lazy="picture2" alt="" />
+      </div>
+      <div>
+        <img class="img" v-img-lazy="picture3" alt="" />
+      </div>
+      <div>
+        <img class="img" v-img-lazy="picture4" alt="" />
+      </div>
+      <div>
+        <img class="img" v-img-lazy="picture5" alt="" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  watch,
-  watchEffect,
-  WatchStopHandle
-} from 'vue';
-
-interface State {
-  count: number;
-}
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
-    const state = reactive<State>({
-      count: 1
-    });
-
-    const stopWatch: WatchStopHandle = watch(
-      () => state.count,
-      (curVal, oldVal) => {
-        console.log(curVal);
-        console.log(oldVal);
-      },
-      {
-        immediate: true, // 初始化监听
-        deep: true // 深度监听
-      }
-    );
-
-    // 页面初始化触发 / 响应式变量更新触发
-    // onInvalidate: 类似react的useEffect
-    // 使用了响应式变量，则会重新执行watchEffect前触发
-    // 使用了一个空的watchEffect，则在组件销毁前触发
-    const stopWatchEffect: WatchStopHandle = watchEffect((onInvalidate) => {
-      console.log(state.count);
-      onInvalidate(() => {
-        alert('count更新/组件卸载');
-      });
-    });
-
-    function addCount(): void {
-      state.count++;
-      if (state.count >= 5) {
-        // 停止watch监听
-        stopWatch();
-        // 停止watchEffect监听
-        stopWatchEffect();
-      }
-    }
+    const picture =
+      'https://img0.baidu.com/it/u=793102324,3683174178&fm=11&fmt=auto&gp=0.jpg';
+    const picture1 =
+      'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3026939796,485761977&fm=26&gp=0.jpg';
+    const picture2 =
+      'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=11918710,2392753884&fm=26&gp=0.jpg';
+    const picture3 =
+      'https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1376319214,2872501189&fm=26&gp=0.jpg';
+    const picture4 =
+      'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2859018036,4025866468&fm=26&gp=0.jpgg';
+    const picture5 =
+      'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3070601450,473916151&fm=26&gp=0.jpg';
     return {
-      ...toRefs<State>(state),
-      addCount
+      picture,
+      picture1,
+      picture2,
+      picture3,
+      picture4,
+      picture5
     };
   }
 });
 </script>
+
+<style lang="less" scoped>
+.home {
+  height: 800px;
+  .content {
+    .img {
+      width: 150px;
+      height: 150px;
+      border: 1px solid red;
+    }
+  }
+}
+</style>

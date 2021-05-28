@@ -2,6 +2,8 @@ import { createApp } from 'vue';
 import App from '@/App.vue';
 import router from '@router/index';
 import store from '@store/index';
+// 图片懒加载
+import imgLazy from '@/utils/imgLazy';
 import '@/index.less';
 
 // 参数：components options
@@ -23,6 +25,7 @@ app.config.errorHandler = (err, vm, info) => {
 
 app.use(store);
 app.use(router);
+app.use(imgLazy);
 app.mount('#app');
 
 // createApp(App)
