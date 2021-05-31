@@ -23,6 +23,9 @@ app.config.errorHandler = (err, vm, info) => {
   throw new Error(err as string);
 };
 
+// 全局变量，测试proxy、ctx
+app.config.globalProperties.name = '哈喽，abl';
+
 app.use(store);
 app.use(router);
 app.use(imgLazy);
