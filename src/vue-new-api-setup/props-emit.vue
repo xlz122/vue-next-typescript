@@ -2,7 +2,7 @@
   <input :value="props.modelValue" @input="onInput" type="text" />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { defineProps, defineEmit } from 'vue';
 
 const props = defineProps({
@@ -19,8 +19,8 @@ const emit = defineEmit(['update:modelValue']);
 // 的功能，他的返回值emit就是ctx.emit，我们可以使用
 // emit这个函数发生事件
 
-function onInput(e) {
-  emit('update:modelValue', e.target.value);
+function onInput(e: Event) {
+  emit('update:modelValue', (e.target as HTMLInputElement).value);
 }
 
 console.log(props); // 父组件传来的值
