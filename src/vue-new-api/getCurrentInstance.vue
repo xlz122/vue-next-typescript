@@ -9,11 +9,15 @@
 <script lang="ts">
 import { defineComponent, getCurrentInstance } from 'vue';
 
+type Proxy = {
+  name: string;
+};
+
 export default defineComponent({
   setup() {
     const instance: unknown = getCurrentInstance();
-    const ctx = (instance as { ctx: unknown }).ctx;
-    const proxy = (instance as { proxy: unknown }).proxy;
+    const ctx = (instance as { ctx: Proxy }).ctx;
+    const proxy = (instance as { proxy: Proxy }).proxy;
     return {
       ctx,
       proxy

@@ -1,5 +1,18 @@
 module.exports = {
-  singleQuote: true, // true表示开启强制使用单引号
-  // semi: false // 结尾是否使用分号
-  trailingComma: 'none' // 对象最后一项默认格式化会加逗号
+  // 强制使用单引号
+  singleQuote: true,
+  // 字符串使用单引号
+  singleQuote: true,
+  // 大括号内的首尾需要空格
+  bracketSpacing: true,
+  // 末尾不需要逗号
+  trailingComma: 'none',
+  // 箭头函数参数括号
+  arrowParens: 'avoid',
+  // 使用默认的折行标准
+  proseWrap: 'preserve',
+  // 根据显示样式决定 html 要不要折行
+  htmlWhitespaceSensitivity: 'css',
+  // 换行符使用 crlf/lf/auto
+  endOfLine: 'auto'
 };

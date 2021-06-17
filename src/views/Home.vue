@@ -1,22 +1,23 @@
 <template>
-  <div>获取全局绑定的属性，方法 getCurrentInstance</div>
-  <div>总是使用proxy来获取全局变量、方法，而不是ctx</div>
-  <div>proxy打包后依然有效，ctx打包后失效</div>
-  <p>{{ proxy.name }}</p>
-  <p>{{ ctx.name }}</p>
+  <div>is="vue:xxx"将普通元素转换为组件</div>
+  <div>v-is已被弃用，取而代之的是is="vue:xxx"</div>
+  <component :is="Test" :name="'hello'"></component>
+  <!-- 不推荐使用HTML元素的“is”属性 -->
+  <!-- <div is="vue:Test"></div> -->
+  <!-- <Test /> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance } from 'vue';
+import { defineComponent } from 'vue';
+import Test from './Test.vue';
 
 export default defineComponent({
+  components: {
+    Test
+  },
   setup() {
-    const instance: unknown = getCurrentInstance();
-    const ctx = (instance as { ctx: unknown }).ctx;
-    const proxy = (instance as { proxy: unknown }).proxy;
     return {
-      ctx,
-      proxy
+      Test
     };
   }
 });
